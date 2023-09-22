@@ -19,7 +19,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (!$user) {
+        if (!$user){
             return response()->json([
                 'error' => "Email e(ou) senha incorreto(s)!"
             ], 404);
