@@ -17,26 +17,26 @@ class AuthController extends Controller
             'device_name'
         ]);
 
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $credentials['email'])->first();
 
         if (!$user){
             return response()->json([
-                'error' => "Email e(ou) senha incorreto(s)!"
-            ], 404);
+                'message' => "Email e(ou) senha incorreto(s)!"
+            ], 403);
         }
 
-        $checkPassword = Hash::check($request->password, $user->password);
+        $checkPassword = Hash::check($credentials['password'], $user->password);
 
         if (!$checkPassword){
             return response()->json([
-                'error' => "Email e(ou) senha incorreto(s)!"
-            ], 404);
+                'message' => "Email e(ou) senha incorreto(s)!"
+            ], 403);
         }
 
         //deleta todos os tokens q esse user tenha feito antes, para ficar com apenas 1
         $user->tokens()->delete();
 
-        $token = $user->createToken($request->device_name)->plainTextToken;
+        $token = $user->createToken($credentials['device_name'])->plainTextToken;
 
         return response()->json([
             'token' => $token

@@ -19,6 +19,6 @@ Route::get('/', function () {
 
 Route::get('/semautorizacao',function () {
     return response()->json([
-        'error' => "Você deve fazer o login!"
+        'message' => "Você deve fazer o login!"
     ], 401);
 })->name('semautorizacao');
