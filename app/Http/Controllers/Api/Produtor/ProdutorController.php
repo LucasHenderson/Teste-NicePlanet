@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api\Produtor;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\ProdutorRequest;
 use App\Models\Produtor;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ProdutorController extends Controller
@@ -31,7 +31,7 @@ class ProdutorController extends Controller
         }
     }
 
-    public function store(Request $request) {
+    public function store(ProdutorRequest $request) {
         $dto = $request->only([
             'nomeProdutor',
             'cpfProdutor'

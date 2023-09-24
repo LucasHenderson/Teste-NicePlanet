@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api\Propriedade;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\PropriedadeRequest;
 use App\Models\Propriedade;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
@@ -32,7 +32,7 @@ class PropriedadeController extends Controller
         }
     }
 
-    public function store(Request $request) {
+    public function store(PropriedadeRequest $request) {
         $dto = $request->only([
             'nomePropriedade',
             'localizacao',

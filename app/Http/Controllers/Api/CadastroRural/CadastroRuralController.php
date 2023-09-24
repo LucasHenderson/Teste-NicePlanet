@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api\CadastroRural;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\CadastroRuralRequest;
 use App\Models\CadastroRural;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CadastroRuralController extends Controller
@@ -42,7 +42,7 @@ class CadastroRuralController extends Controller
         }
     }
 
-    public function store(Request $request) {
+    public function store(CadastroRuralRequest $request) {
         $dto = $request->only([
             'idProdutor',
             'idPropriedade'

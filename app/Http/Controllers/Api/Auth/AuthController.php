@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\AuthRequest;
+use App\Http\Requests\Api\RegistrarRequest;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -52,9 +53,7 @@ class AuthController extends Controller
         ], 200);
     }
 
-    public function store(Request $request){
-        //o ideia seria o front me enviar a senha já criptografada
-
+    public function store(RegistrarRequest $request){
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,

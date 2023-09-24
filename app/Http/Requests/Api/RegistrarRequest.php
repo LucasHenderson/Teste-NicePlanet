@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthRequest extends FormRequest
+class RegistrarRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,6 +22,10 @@ class AuthRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => [
+                'required',
+                'max:255'
+            ],
             'email' => [
                 'required',
                 'email',
@@ -31,10 +35,6 @@ class AuthRequest extends FormRequest
                 'required',
                 'min:4',
                 'max:255'
-            ],
-            'device_name' => [
-                'required',
-                'max:255'
             ]
         ];
     }
@@ -42,14 +42,14 @@ class AuthRequest extends FormRequest
     public function messages()
     {
         return [
+            'name.required' => 'O campo nome é obrigatório!',
+            'name.max' => 'O campo nome não pode ter mais de 255 caracteres!',
             'email.required' => 'O campo email é obrigatório!',
             'email.email' => 'O campo email deve ser um endereço de email válido!',
             'email.max' => 'O campo email não pode ter mais de 255 caracteres!',
             'password.required' => 'O campo senha é obrigatório!',
             'password.min' => 'O campo senha deve ter pelo menos 4 caracteres!',
             'password.max' => 'O campo senha não pode ter mais de 255 caracteres!',
-            'device_name.required' => 'O campo nome do dispositivo é obrigatório!',
-            'device_name.max' => 'O campo nome do dispositivo não pode ter mais de 255 caracteres!',
         ];
     }
 }
