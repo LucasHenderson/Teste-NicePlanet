@@ -13,31 +13,39 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function auth(AuthRequest $request){
+        //dto para pegar apenas os campos necessarios
         $credentials = $request->only([
             'email',
             'password',
             'device_name'
         ]);
 
+        //consulta no banco para varificar email (OBS: para a busca no primeiro que encontrar)
         $user = User::where('email', $credentials['email'])->first();
 
+        //caso nao tenha encontrado o email
         if (!$user){
             return response()->json([
                 'message' => "Email e(ou) senha incorreto(s)!"
             ], 403);
         }
 
+        //verifica a senha criptografada
         $checkPassword = Hash::check($credentials['password'], $user->password);
 
+        //caso a senha esteja errada
         if (!$checkPassword){
             return response()->json([
                 'message' => "Email e(ou) senha incorreto(s)!"
             ], 403);
         }
 
+        //OBS: foi feita essa analise de email e senha separados pq o email poderia vir "null"
+
         //deleta todos os tokens q esse user tenha feito antes, para ficar com apenas 1
         $user->tokens()->delete();
 
+        //gera o token baseado no device_name
         $token = $user->createToken($credentials['device_name'])->plainTextToken;
 
         return response()->json([

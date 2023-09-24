@@ -13,6 +13,8 @@ Route::post('/login', [AuthController::class, 'auth']);
 Route::post('/registrar', [AuthController::class, 'store']);
 
 Route::middleware(['auth:sanctum'])->group(function(){
+    //Todas as rotas que estão aqui dentro precisam de token de acesso
+
     //Rotas de Produtor
     Route::get('/produtor', [ProdutorController::class, 'index']);
     Route::get('/produtor/{produtor}', [ProdutorController::class, 'show']);

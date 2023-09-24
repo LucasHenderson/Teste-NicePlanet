@@ -17,10 +17,12 @@ class PropriedadeController extends Controller
         $this->propriedade = new Propriedade();
     }
 
+    //lista todas as propriedades
     public function index() {
         return response()->json($this->propriedade->all());
     }
 
+    //apresenta os dados de apenas 1 propriedade
     public function show(string $id) {
         $propriedade = DB::select('SELECT * FROM propriedade WHERE idPropriedade = ?', [$id]);
         if (!$propriedade){
@@ -32,6 +34,7 @@ class PropriedadeController extends Controller
         }
     }
 
+    //faz o registro de uma nova propriedade
     public function store(PropriedadeRequest $request) {
         $dto = $request->only([
             'nomePropriedade',

@@ -16,10 +16,12 @@ class ProdutorController extends Controller
         $this->produtor = new Produtor();
     }
 
+    //lista todos os produtores
     public function index() {
         return response()->json($this->produtor->all());
     }
 
+    //apresenta os dados de apenas 1 produtor
     public function show(string $id) {
         $produtor = DB::select('SELECT * FROM produtor WHERE idProdutor = ?', [$id]);
         if (!$produtor){
@@ -31,6 +33,7 @@ class ProdutorController extends Controller
         }
     }
 
+    //faz o registro do produtor no bd
     public function store(ProdutorRequest $request) {
         $dto = $request->only([
             'nomeProdutor',
