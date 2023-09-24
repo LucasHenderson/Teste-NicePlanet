@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\AuthRequest;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -49,5 +50,26 @@ class AuthController extends Controller
         return response()->json([
             'message' => "Logout feito com sucesso!"
         ], 200);
+    }
+
+    public function store(Request $request){
+        //o ideia seria o front me enviar a senha já criptografada
+
+        $user = new User([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        try {
+            $user->save();
+            return response()->json([
+                'message' => "Registro feito com sucesso!"
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
     }
 }
