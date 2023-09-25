@@ -21,11 +21,55 @@ Esse projeto foi desenvolvido para um desafio teste da <a href="https://www.nice
 ## Endpoints
 ### POST
 - **/api/login** => Fazer o login na API
+```
+{
+	"email":"lucas@gmail.com",
+	"password":"1234",
+	"device_name":"Insomnia" 
+}
+```
+
+
 - **/api/logout** => Fazer o logout na API
+```
+Basta colocar o Token na aba Bearer, exemplo:
+1|GF3bIwh7yj9MxGxmTWXxrqPLB94Ju4qqwLzUuPHzc003d3a9
+```
+
 - **/api/registrar** => Registrar um novo login na API
+```
+{
+	"email":"lucas@gmail.com",
+	"password":"1234",
+	"device_name":"Insomnia" 
+}
+```
+
 - **/api/produtor** => Cadastrar um novo produtor
+```
+{
+	"nomeProdutor": "Pedro",
+	"cpfProdutor": "777.777.777-77"
+}
+```
+
 - **/api/propriedade** => Cadastrar uma nova propriedade
+```
+{
+	"nomePropriedade": "Propriedade 6",
+	"localizacao": "Local 6",
+	"tamanho": 600.00,
+	"uso": "Agricultura"
+}
+```
+
 - **/api/cadastrorural** => Cadastrar um novo cadastro rural
+```
+{
+	"idProdutor":1,
+	"idPropriedade":1
+}
+```
 
 ### GET
 - **/api/produtor** => Fazer a listagem de todos os produtores cadastrados
