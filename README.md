@@ -21,7 +21,7 @@ Esse projeto foi desenvolvido para um desafio teste da <a href="https://www.nice
 ## Endpoints
 ### POST
 - **/api/login** => Fazer o login na API
-```
+```JSON
 {
 	"email":"lucas@gmail.com",
 	"password":"1234",
@@ -37,7 +37,7 @@ Basta colocar o Token na aba Bearer, exemplo:
 ```
 
 - **/api/registrar** => Registrar um novo login na API
-```
+```JSON
 {
 	"email":"lucas@gmail.com",
 	"password":"1234",
@@ -46,7 +46,7 @@ Basta colocar o Token na aba Bearer, exemplo:
 ```
 
 - **/api/produtor** => Cadastrar um novo produtor
-```
+```JSON
 {
 	"nomeProdutor": "Pedro",
 	"cpfProdutor": "777.777.777-77"
@@ -54,7 +54,7 @@ Basta colocar o Token na aba Bearer, exemplo:
 ```
 
 - **/api/propriedade** => Cadastrar uma nova propriedade
-```
+```JSON
 {
 	"nomePropriedade": "Propriedade 6",
 	"localizacao": "Local 6",
@@ -64,7 +64,7 @@ Basta colocar o Token na aba Bearer, exemplo:
 ```
 
 - **/api/cadastrorural** => Cadastrar um novo cadastro rural
-```
+```JSON
 {
 	"idProdutor":1,
 	"idPropriedade":1
