@@ -9,7 +9,7 @@
 
 ## Sobre o Projeto
 
-Esse projeto foi desenvolvido para um desafio teste da <a href="https://www.niceplanet.agr.br/">Niceplanet</a>. Espero que gostem :)
+Esse projeto foi desenvolvido para um desafio teste da <a href="https://www.niceplanet.agr.br/"  target="_blank">Niceplanet</a>. Espero que gostem :)
 
 ## Tecnologias Utilizadas
 
